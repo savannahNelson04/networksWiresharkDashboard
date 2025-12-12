@@ -1,0 +1,93 @@
+<!-- this is our html front end to display our results provide explanations -->
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Network Traffic Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background-color: #f5f5f5;
+        }
+        h1, h2 {
+            color: #333;
+        }
+        .chart-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+        }
+        img {
+            width: 70%;
+            border-radius: 8px;
+            display: block;
+            margin: auto;
+        }
+        p {
+            width: 70%;
+            margin: 15px auto;
+            color: #555;
+            line-height: 1.5;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Network Traffic Dashboard</h1>
+
+    <h2>Protocol Distribution</h2>
+    <img src="/static/protocol_distribution.png">
+    <br>
+    The protocol distribution chart highlights which network protocols appeared most frequently during the captured session, giving a high-level view of overall traffic behavior. TCP dominates the network at 45.5%, indicating a heavy reliance on reliable, connection-oriented communication such as web browsing, messaging apps, and system services. TLS and QUIC together make up a large portion of traffic as well, reflecting encrypted communication to modern websites and applications—especially streaming platforms and cloud services. Lighter-weight protocols such as DNS and SSDP appear in smaller amounts, which is expected since they support name resolution and device discovery rather than bulk data transfer. Overall, the distribution shows a realistic modern network pattern: heavy encrypted traffic, consistent TCP usage, and small bursts of support protocols handling background system tasks.
+    <br>
+    <h2>Top Source IPs</h2>
+    <img src="/static/top_source_ips.png">
+    <br>
+    The top source IP chart reveals which devices or external servers generated the most traffic during the capture period. The internal address 10.9.142.12 produced more than 550 packets, indicating it is likely the local machine being monitored. Several Apple, Google, and CDN-related IP addresses appear as well (e.g., 17.x.x.x and 142.251.x.x), which is common because modern applications constantly sync data, update content, and communicate with cloud backends. The presence of multiple 17.x.x.x addresses (Apple) suggests iCloud, Apple push notifications, or background system services were active. Similarly, traffic to Google-owned IPs reflects encrypted QUIC or TLS sessions typical of Chrome, YouTube, and other Google services. Observing these heavy-hitters helps validate the traffic patterns and provides insight into which external services consume the most bandwidth.    <br>
+    <h2>Protocol Usage</h2>
+    <img src="/static/protocol_usage.png">
+    <br>
+    The bar chart provides another view of protocol activity, showing raw packet counts for each protocol. TCP again stands out as the largest contributor, with over 600 packets, demonstrating that many applications still rely heavily on traditional TCP connections for reliable communication. TLS and QUIC also appear frequently, reinforcing the prevalence of encrypted connections and modern transport mechanisms. DNS traffic appears in moderate bursts, which is typical since devices constantly resolve domain names during browsing or application activity. Smaller protocols like ARP, MDNS, and ICMP appear only in low volumes, which is expected because they provide essential but lightweight network coordination. This breakdown helps confirm that the network session captured is healthy and behaving normally: dominated by encrypted traffic, supported by DNS lookups, and structured around reliable TCP flows.
+    <br>
+
+    <br><br><br>
+    <h3>Terminal output of analysis of Wireshare packet capture</h3><br>
+
+    Total packets: 1358<br>
+    <br>
+    Protocol counts:<br>
+    DATA: 103<br>
+    TCP: 618<br>
+    SSDP: 9<br>
+    TLS: 271<br>
+    QUIC: 282<br>
+    DNS: 54<br>
+    MDNS: 2<br>
+    ARP: 3<br>
+    ICMP: 16<br>
+    <br>
+    Top source addresses:<br>
+    10.9.142.12: 552<br>
+    17.253.127.137: 201<br>
+    104.16.102.112: 108<br>
+    17.248.195.48: 72<br>
+    17.248.195.29: 67<br>
+    192.178.192.113: 46<br>
+    17.253.26.163: 45<br>
+    35.186.224.24: 34<br>
+    129.119.141.2: 31<br>
+    142.251.186.139: 30<br>
+
+
+    <br><br><br><br><br><br><br>
+
+
+    Re-run Wireshark and analyze_traffic to update charts and insights
+
+</body>
+</html>
