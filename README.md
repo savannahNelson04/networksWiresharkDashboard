@@ -1,10 +1,10 @@
 # Networks Wireshark Dashboard
 
-##Description
+Description <br>
 The Networks Wireshark Dashboard is a project that creates insights and analyzes packet movement captured on Wireshark through a web dashboard. It helps users understand packet movement, traffic patterns, and key network statistics. <br><br>
 
 
-##Features
+Features <br>
 Templates folder includes index file for front end website/dashboard display<br>
 run app.py file to get flask to render and run the website<br>
 
