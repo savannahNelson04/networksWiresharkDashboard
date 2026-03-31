@@ -1,4 +1,4 @@
-# networksWiresharkDashboard
+# Networks Wireshark Dashboard
 Used Wireshark to create insights and analyze packet movement on a network<br><br>
 
 templates folder includes index file for front end website/dashboard display<br>
